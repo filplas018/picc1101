@@ -1,7 +1,7 @@
 EXTRA_CFLAGS := -DMAX_VERBOSE_LEVEL=4
 CFLAGS += -I/usr/local/include     # Přidává cestu k WiringPi hlavičkám
 LDFLAGS += -L/usr/local/lib        # Přidává cestu k WiringPi knihovnám
-LIBS := -lwiringPi                 # Definice WiringPi knihovny odděleně
+LIBS := -lm -lwiringPi                 # Definice WiringPi knihovny odděleně
 
 all: picc1101
 

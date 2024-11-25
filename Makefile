@@ -1,13 +1,15 @@
 EXTRA_CFLAGS := -DMAX_VERBOSE_LEVEL=4
+CFLAGS += -I/usr/local/include     # Přidává cestu k WiringPi hlavičkám
+LDFLAGS += -L/usr/local/lib        # Přidává cestu k WiringPi knihovnám
+LIBS := -lwiringPi                 # Definice WiringPi knihovny odděleně
 
-all: picc1101 
+all: picc1101
 
 clean:
 	rm -f *.o picc1101
-	 
 
 picc1101: main.o serial.o pi_cc_spi.o radio.o kiss.o util.o test.o
-	$(CCPREFIX)gcc $(LDFLAGS) -s -lm -lwiringPi -o picc1101 main.o serial.o pi_cc_spi.o radio.o kiss.o util.o test.o
+	$(CCPREFIX)gcc $(LDFLAGS) -o picc1101 main.o serial.o pi_cc_spi.o radio.o kiss.o util.o test.o $(LIBS)
 
 main.o: main.h main.c
 	$(CCPREFIX)gcc $(CFLAGS) $(EXTRA_CFLAGS) -c -o main.o main.c

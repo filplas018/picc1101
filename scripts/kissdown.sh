@@ -1,2 +1,2 @@
-sudo killall kissattach
-sudo killall socat
+killall kissattach
+killall socat
